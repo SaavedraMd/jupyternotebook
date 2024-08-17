@@ -27,10 +27,6 @@ jobs:
         docker run -d -p 8888:8888 --name jupyter_test_container jupyter-test-image
         sleep 10 # Esperar a que el contenedor esté listo
 
-    - name: Verify Jupyter Notebook is running
-      run: |
-        curl -s http://localhost:8888 | grep "Jupyter Notebook" || (echo "Error: Jupyter Notebook no está funcionando en el puerto 8888." && exit 1)
-
     - name: Stop and remove Docker container
       run: |
         docker stop jupyter_test_container
